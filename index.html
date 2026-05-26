@@ -64,47 +64,39 @@
       bio: '',
 
       // ---------- الصور ----------
-      profileImage: 'https://via.placeholder.com/400?text=DS', // ضع هنا رابط الصورة الشخصية لديفيد
+      profileImage: 'https://ik.imagekit.io/fojb8puzo/David_Sherif', 
       profileImageSize: 'w-36 h-36 sm:w-48 sm:h-48',
-      coverImage: '', // يمكنك تركها فارغة أو وضع صورة غلاف متناسقة
+      coverImage: '', 
 
       // ---------- أزرار التواصل المستخرجة من الكارد ----------
       contacts: [
         { icon: 'fa-solid fa-phone', label: 'Call', url: 'tel:+201003662276' },
-        { icon: 'fa-brands fa-whatsapp', label: 'WhatsApp', url: 'https://wa.me/201003662276' },
+        { icon: 'fa-brands fa-whatsapp', label: 'WhatsApp', url: 'https://wa.me/201283095500' },
         { icon: 'fa-regular fa-envelope', label: 'Email', url: 'mailto:david.sherif2000@gmail.com' },
         { icon: 'fa-solid fa-coins', label: 'Instapay', url: 'https://ipn.eg/' },
       ],
       
-      // ---------- روابط التواصل الاجتماعي ----------
+      // ---------- روابط التواصل الاجتماعي (تم إزالة LinkedIn) ----------
       socials: [
-        { icon: 'fa-brands fa-linkedin-in', url: 'https://www.linkedin.com/', label: 'LinkedIn' },
-        { icon: 'fa-brands fa-instagram', url: 'https://www.instagram.com/', label: 'Instagram' },
-        { icon: 'fa-brands fa-facebook', url: 'https://www.facebook.com/', label: 'Facebook' }
+        { icon: 'fa-brands fa-instagram', url: 'https://www.instagram.com/david.sherif2000', label: 'Instagram' },
+        { icon: 'fa-brands fa-facebook', url: 'https://www.facebook.com/david.sherif.338', label: 'Facebook' }
       ],
 
       // ---------- رمز QR ----------
-      qrCodeImageUrl: '', // ضع هنا رابط صورة الـ QR المرفقة لتظهر في الصفحة
+      qrCodeImageUrl: '', 
 
       // ---------- الألوان المتوافقة مع الكارد (بني داكن + أبيض) ----------
       colors: {
-        // خلفية الكارد الرئيسي (RGB لتتوافق مع الـ glass effect الشفاف)
-        cardBg: '28, 10, 8',             // البني الداكن المستخرج من الصورة #1C0A08
-        // النصوص
-        textPrimary: '#ffffff',          // أبيض
-        textSecondary: '#E5E7EB',        // رمادي فاتح جداً (gray-200)
-        textMuted: '#9CA3AF',            // رمادي متوسط (gray-400)
-        // الأزرار الرئيسية (خلفية، نص)
-        buttonBg: '#ffffff',             // أبيض لتصميم عصري ومتباين عالي
-        buttonText: '#1C0A08',           // بني داكن (نص الزرار)
+        cardBg: '28, 10, 8',             
+        textPrimary: '#ffffff',          
+        textSecondary: '#E5E7EB',        
+        textMuted: '#9CA3AF',            
+        buttonBg: '#ffffff',             
+        buttonText: '#1C0A08',           
         buttonBorder: '255, 255, 255',   
-        // أيقونات السوشيال ميديا
         socialIcon: '#ffffff',            
-        // خلفية الـ QR code
         qrBg: '#ffffff',                  
-        // التذييل
         footerText: '#6B7280',            
-        // الحدود العامة
         border: '255, 255, 255',          
       },
 
@@ -175,7 +167,6 @@ END:VCARD`;
         >
           {/* الغلاف والبروفايل */}
           <div className="relative h-48 bg-[#150706] flex items-center justify-center border-b border-white/5">
-            {/* في حال عدم وجود صورة غلاف، يظهر لون داكن متناسق */}
             {CONFIG.coverImage && (
               <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url('${CONFIG.coverImage}')` }}></div>
             )}
@@ -206,7 +197,7 @@ END:VCARD`;
               </h2>
             </div>
 
-            {/* أزرار التواصل (قائمة شفافة أنيقة متناسقة مع الخلفية الغامقة) */}
+            {/* أزرار التواصل */}
             <div className="grid grid-cols-1 gap-3">
               {CONFIG.contacts.map((btn, idx) => (
                 <a
@@ -263,7 +254,7 @@ END:VCARD`;
               </div>
             )}
 
-            {/* أزرار الإجراءات الرئيسية المتباينة بالأبيض */}
+            {/* أزرار الإجراءات الرئيسية */}
             <div className="flex flex-col items-center gap-3 pt-4">
               <button
                 onClick={downloadVcard}
