@@ -3,160 +3,51 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
-  <title>Cardvia · David Sherif | Digital Business Card</title>
-  <!-- Tailwind CSS v3 + Inter Font -->
+  <title>Cardvia · David Sherif</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <!-- Font Awesome 6 (solid, brands, regular) -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <style>
-    * {
-      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    * { font-family: 'Inter', system-ui, -apple-system, sans-serif; }
+    .glass-card {
+      background: rgba(var(--card-bg-rgb, 28, 10, 8), 0.75);
+      backdrop-filter: blur(16px) saturate(180%);
+      -webkit-backdrop-filter: blur(16px) saturate(180%);
+      border: 1px solid rgba(255, 255, 255, 0.08);
     }
-    
-    /* Dark premium background with subtle noise pattern */
-    body {
-      background: radial-gradient(circle at 10% 20%, #0B0C10, #030405);
-      position: relative;
-    }
-    
-    body::before {
-      content: "";
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCIgdmlld0JveD0iMCAwIDQwIDQwIj48cGF0aCBmaWxsPSIjMjQyNDI0IiBmaWxsLW9wYWNpdHk9IjAuMDMiIGQ9Ik0wIDBoNDB2NDBIMHoiLz48L3N2Zz4=');
-      pointer-events: none;
-      opacity: 0.3;
-    }
-
-    /* Glass card with dark premium finish & golden accents */
-    .premium-card {
-      background: rgba(8, 8, 12, 0.86);
-      backdrop-filter: blur(18px) saturate(180%);
-      -webkit-backdrop-filter: blur(18px) saturate(180%);
-      border: 1px solid rgba(212, 175, 55, 0.25);
-      box-shadow: 0 30px 50px -20px rgba(0,0,0,0.8), 0 0 0 0.5px rgba(212,175,55,0.15) inset;
-      transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
-    }
-    
-    .premium-card:hover {
-      border-color: rgba(212, 175, 55, 0.5);
-      box-shadow: 0 35px 55px -22px rgba(0,0,0,0.9), 0 0 0 1px rgba(212,175,55,0.3) inset;
-    }
-
     .fade-in {
-      animation: fadeInUp 0.7s ease-out forwards;
+      animation: fadeIn 0.8s cubic-bezier(0.4, 0, 0.2, 1);
     }
-    
-    @keyframes fadeInUp {
-      0% {
-        opacity: 0;
-        transform: translateY(24px);
-      }
-      100% {
-        opacity: 1;
-        transform: translateY(0);
-      }
+    @keyframes fadeIn {
+      0% { opacity: 0; transform: translateY(12px); }
+      100% { opacity: 1; transform: translateY(0); }
     }
-
-    /* Golden shine button effect */
-    .btn-golden {
+    .btn-shine {
       position: relative;
       overflow: hidden;
-      transition: all 0.25s ease;
-      background: linear-gradient(105deg, #D4AF37 0%, #F3E5AB 50%, #B88B1F 100%);
-      color: #0B0C10;
-      font-weight: 700;
-      letter-spacing: 0.01em;
-      border: none;
     }
-    
-    .btn-golden::after {
+    .btn-shine::after {
       content: '';
       position: absolute;
       top: -50%;
-      left: -60%;
+      left: -50%;
       width: 200%;
       height: 200%;
-      background: linear-gradient(115deg, rgba(255,255,240,0) 10%, rgba(255,245,180,0.5) 50%, rgba(255,255,240,0) 90%);
-      transform: rotate(25deg);
-      transition: all 0.65s ease;
+      background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+      transform: rotate(45deg);
+      transition: all 0.5s ease;
       opacity: 0;
     }
-    
-    .btn-golden:hover::after {
+    .btn-shine:hover::after {
       opacity: 1;
       left: 100%;
-      transition: all 0.7s ease;
-    }
-    
-    .btn-golden:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 12px 22px -8px rgba(212, 175, 55, 0.5);
-      filter: brightness(1.05);
-    }
-    
-    .btn-outline-gold {
-      background: rgba(212, 175, 55, 0.05);
-      backdrop-filter: blur(4px);
-      border: 1px solid rgba(212, 175, 55, 0.55);
-      color: #F3E5AB;
-      transition: all 0.25s;
-    }
-    
-    .btn-outline-gold:hover {
-      background: rgba(212, 175, 55, 0.18);
-      border-color: #D4AF37;
-      color: #FFFAEC;
-      transform: translateY(-2px);
-    }
-    
-    .social-gold {
-      transition: all 0.2s cubic-bezier(0.2, 0.9, 0.6, 1.1);
-      filter: drop-shadow(0 2px 5px rgba(0,0,0,0.3));
-    }
-    
-    .social-gold:hover {
-      transform: scale(1.2);
-      filter: drop-shadow(0 0 8px rgba(212,175,55,0.7));
-    }
-    
-    .qr-glow {
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-    
-    .qr-glow:hover {
-      transform: scale(1.02);
-      box-shadow: 0 10px 25px -5px rgba(212, 175, 55, 0.3);
-    }
-
-    /* custom scroll */
-    ::-webkit-scrollbar {
-      width: 4px;
-    }
-    ::-webkit-scrollbar-track {
-      background: #101010;
-    }
-    ::-webkit-scrollbar-thumb {
-      background: #D4AF37;
-      border-radius: 6px;
-    }
-    
-    /* profile image ring gold */
-    .gold-ring {
-      border: 2px solid rgba(212, 175, 55, 0.6);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.4), 0 0 0 4px rgba(0,0,0,0.4);
     }
   </style>
 </head>
-<body class="min-h-screen flex items-center justify-center p-5">
+<body class="bg-[#1C0A08] text-white min-h-screen flex items-center justify-center p-4">
 
   <div id="root" class="w-full max-w-md mx-auto fade-in"></div>
 
-  <!-- React + Babel -->
   <script src="https://unpkg.com/react@18.2.0/umd/react.production.min.js" crossorigin></script>
   <script src="https://unpkg.com/react-dom@18.2.0/umd/react-dom.production.min.js" crossorigin></script>
   <script src="https://unpkg.com/@babel/standalone@7.22.5/babel.min.js"></script>
@@ -164,225 +55,187 @@
   <script type="text/babel">
     const { useState, useEffect } = React;
 
-    // ========== CONFIGURATION — UPDATED with David Sherif data + DARK PREMIUM STYLE ==========
+    // ====== CONFIGURATION (متوافق تماماً مع تصميم الكارد) ======
     const CONFIG = {
-      // ---------- PERSONAL INFO (from the provided image) ----------
+      // ---------- البيانات الشخصية المستخرجة من الكارد ----------
       fullName: 'David Sherif',
-      jobTitle: 'Digital Card Architect',
-      arabicTitle: 'مصمم بطاقات رقمية',
-      bio: 'Crafting next‑gen digital identities • Seamless connections • Powered by Cardiva.',
-      
-      // ---------- IMAGES (using professional visuals, consistent with dark theme) ----------
-      profileImage: 'https://ik.imagekit.io/fojb8puzo/female-doctor-lab-coat-white-isolated-confident-smile.jpg',
-      profileImageSize: 'w-36 h-36 sm:w-44 sm:h-44',
-      coverImage: 'https://ik.imagekit.io/fojb8puzo/Screenshot%202026-03-01%20232412.png', // keeps consistency, but elegant dark overlay will be applied
-      
-      // ---------- CONTACT BUTTONS (4 buttons: Call, WhatsApp, Email, Instapay) ----------
+      jobTitle: 'Digital Business Card',
+      arabicTitle: '',
+      bio: '',
+
+      // ---------- الصور ----------
+      profileImage: 'https://via.placeholder.com/400?text=DS', // ضع هنا رابط الصورة الشخصية لديفيد
+      profileImageSize: 'w-36 h-36 sm:w-48 sm:h-48',
+      coverImage: '', // يمكنك تركها فارغة أو وضع صورة غلاف متناسقة
+
+      // ---------- أزرار التواصل المستخرجة من الكارد ----------
       contacts: [
         { icon: 'fa-solid fa-phone', label: 'Call', url: 'tel:+201003662276' },
         { icon: 'fa-brands fa-whatsapp', label: 'WhatsApp', url: 'https://wa.me/201003662276' },
-        { icon: 'fa-regular fa-envelope', label: 'Email', url: 'mailto:david.sherif.fz000@gmail.com' },
+        { icon: 'fa-regular fa-envelope', label: 'Email', url: 'mailto:david.sherif2000@gmail.com' },
         { icon: 'fa-solid fa-coins', label: 'Instapay', url: 'https://ipn.eg/' },
       ],
       
-      // ---------- SOCIAL ICONS (3 icons) ----------
+      // ---------- روابط التواصل الاجتماعي ----------
       socials: [
-        { icon: 'fa-brands fa-linkedin-in', url: 'https://www.linkedin.com/in/davidsherif', label: 'LinkedIn' },
-        { icon: 'fa-brands fa-instagram', url: 'https://www.instagram.com/davidsherif', label: 'Instagram' },
-        { icon: 'fa-brands fa-facebook', url: 'https://www.facebook.com/davidsherif', label: 'Facebook' }
+        { icon: 'fa-brands fa-linkedin-in', url: 'https://www.linkedin.com/', label: 'LinkedIn' },
+        { icon: 'fa-brands fa-instagram', url: 'https://www.instagram.com/', label: 'Instagram' },
+        { icon: 'fa-brands fa-facebook', url: 'https://www.facebook.com/', label: 'Facebook' }
       ],
-      
-      // ---------- QR CODE (image) ----------
-      qrCodeImageUrl: 'https://ik.imagekit.io/fojb8puzo/card3%20qr',
-      
-      // ---------- NEW DARK / GOLD THEME COLORS (tailored to the mockup aesthetic) ----------
+
+      // ---------- رمز QR ----------
+      qrCodeImageUrl: '', // ضع هنا رابط صورة الـ QR المرفقة لتظهر في الصفحة
+
+      // ---------- الألوان المتوافقة مع الكارد (بني داكن + أبيض) ----------
       colors: {
-        cardBg: '6, 6, 10',           // deep near-black (rgb)
-        textPrimary: '#F8F9FA',        // off-white
-        textSecondary: '#E0E0E0',      // light grey
-        textMuted: '#A1A1AA',          // zinc-400
-        buttonBg: '#D4AF37',            // gold premium
-        buttonText: '#0A0A0E',          // almost black for contrast
-        buttonBorder: '212, 175, 55',   // golden border elements
-        socialIcon: '#D4AF37',          // gold
-        qrBg: '#FFFFFF',                // white QR background for scan readability
-        footerText: '#6B7280',          // muted grey
-        border: '212, 175, 55',         // gold accents
+        // خلفية الكارد الرئيسي (RGB لتتوافق مع الـ glass effect الشفاف)
+        cardBg: '28, 10, 8',             // البني الداكن المستخرج من الصورة #1C0A08
+        // النصوص
+        textPrimary: '#ffffff',          // أبيض
+        textSecondary: '#E5E7EB',        // رمادي فاتح جداً (gray-200)
+        textMuted: '#9CA3AF',            // رمادي متوسط (gray-400)
+        // الأزرار الرئيسية (خلفية، نص)
+        buttonBg: '#ffffff',             // أبيض لتصميم عصري ومتباين عالي
+        buttonText: '#1C0A08',           // بني داكن (نص الزرار)
+        buttonBorder: '255, 255, 255',   
+        // أيقونات السوشيال ميديا
+        socialIcon: '#ffffff',            
+        // خلفية الـ QR code
+        qrBg: '#ffffff',                  
+        // التذييل
+        footerText: '#6B7280',            
+        // الحدود العامة
+        border: '255, 255, 255',          
       },
-      
-      // ---------- vCard data (updated) ----------
+
+      // ---------- بيانات vCard التلقائية ----------
       vCard: {
         fn: 'David Sherif',
-        org: 'Cardiva',
-        title: 'Digital Card Architect',
+        org: '',
+        title: '',
         tel: '+201003662276',
-        email: 'david.sherif.fz000@gmail.com',
-        url: 'https://cardiva.io'
+        email: 'david.sherif2000@gmail.com',
+        url: ''
       },
-      
-      // ---------- WhatsApp number for "Request Your Card" (preserved original, but can be updated – keep as is) ----------
+
+      // ---------- رقم واتساب لطلب البطاقة ----------
       whatsappRequestNumber: '+201090225298',
     };
-    
-    // Google Analytics tracking (no conflict, safe)
+
     const trackClick = (label) => {
       if (typeof gtag !== 'undefined') {
         gtag('event', 'button_click', { event_category: 'engagement', event_label: label });
       }
-      // console log for debugging (optional)
-      if (process.env.NODE_ENV !== 'production') console.log(`track: ${label}`);
     };
-    
-    // Download vCard
+
     const downloadVcard = () => {
       trackClick('download_vcard');
-      const vcardData = `BEGIN:VCARD
+      const vcard = `BEGIN:VCARD
 VERSION:3.0
-FN:${CONFIG.vCard.fn}
+FN:${CONFIG.vCard.fn || CONFIG.fullName}
 ORG:${CONFIG.vCard.org}
 TITLE:${CONFIG.vCard.title}
 TEL:${CONFIG.vCard.tel}
 EMAIL:${CONFIG.vCard.email}
 URL:${CONFIG.vCard.url}
 END:VCARD`;
-      const blob = new Blob([vcardData], { type: 'text/vcard' });
+      const blob = new Blob([vcard], { type: 'text/vcard' });
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
       a.href = url;
-      a.download = `${CONFIG.fullName.replace(/\s+/g, '_')}_contact.vcf`;
+      a.download = `${CONFIG.fullName.replace(/\s+/g, '_')}.vcf`;
       document.body.appendChild(a);
       a.click();
       document.body.removeChild(a);
       URL.revokeObjectURL(url);
     };
-    
-    // Download QR image
+
     const downloadQR = () => {
       trackClick('download_qr');
       if (CONFIG.qrCodeImageUrl) {
         const a = document.createElement('a');
         a.href = CONFIG.qrCodeImageUrl;
-        a.download = `${CONFIG.fullName.replace(/\s+/g, '_')}_QRscan.png`;
+        a.download = `${CONFIG.fullName.replace(/\s+/g, '_')}_QR.png`;
         document.body.appendChild(a);
         a.click();
         document.body.removeChild(a);
-      } else {
-        // fallback QR generation (simple illustration)
-        const canvas = document.createElement('canvas');
-        canvas.width = 250;
-        canvas.height = 250;
-        const ctx = canvas.getContext('2d');
-        ctx.fillStyle = '#FFFFFF';
-        ctx.fillRect(0, 0, 250, 250);
-        ctx.fillStyle = '#111111';
-        for (let i = 0; i < 10; i++) {
-          for (let j = 0; j < 10; j++) {
-            if ((i + j) % 2 === 0 || (i < 3 && j < 3)) {
-              ctx.fillRect(i * 25, j * 25, 22, 22);
-            }
-          }
-        }
-        ctx.fillRect(15, 15, 45, 45);
-        ctx.fillRect(190, 15, 45, 45);
-        ctx.fillRect(15, 190, 45, 45);
-        canvas.toBlob((blob) => {
-          const url = URL.createObjectURL(blob);
-          const a = document.createElement('a');
-          a.href = url;
-          a.download = `${CONFIG.fullName.replace(/\s+/g, '_')}_QR.png`;
-          document.body.appendChild(a);
-          a.click();
-          document.body.removeChild(a);
-          URL.revokeObjectURL(url);
-        }, 'image/png');
       }
     };
-    
-    // Main Digital Card Component
+
     function DigitalBusinessCard() {
       const colors = CONFIG.colors;
-      
-      // Add subtle dark gradient overlay on cover image to match dark theme and improve text contrast (aesthetic)
-      const coverStyle = {
-        backgroundImage: `linear-gradient(0deg, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.3) 60%), url('${CONFIG.coverImage}')`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center 30%',
-      };
-      
+
       return (
-        <div className="premium-card rounded-[2.5rem] overflow-hidden transition-all duration-500 w-full">
-          {/* Cover Image with gradient overlay for moody elegance */}
-          <div className="relative h-72 sm:h-80 w-full" style={coverStyle}>
-            {/* Profile image positioned at bottom center with golden ring */}
-            <div className="absolute -bottom-12 left-1/2 transform -translate-x-1/2 z-20">
-              <div className={`${CONFIG.profileImageSize} rounded-full p-0.5 gold-ring bg-black/40 backdrop-blur-sm`}>
-                <div className="rounded-full overflow-hidden border-2 border-black/30">
-                  <img 
-                    src={CONFIG.profileImage} 
-                    alt={CONFIG.fullName}
-                    className="w-full h-full object-cover"
-                    onError={(e) => e.target.src = 'https://ui-avatars.com/api/?background=D4AF37&color=111&name=David+Sherif&size=128'}
-                  />
-                </div>
-              </div>
-            </div>
-            {/* Decorative gold accent line (optional) */}
-            <div className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-transparent via-[#D4AF37] to-transparent opacity-50"></div>
-          </div>
-          
-          {/* MAIN CARD CONTENT */}
-          <div className="pt-20 pb-8 px-6 sm:px-7 space-y-6">
-            {/* Name & Titles */}
-            <div className="text-center space-y-2">
-              <h1 className="text-4xl sm:text-5xl font-extrabold tracking-tight" style={{ color: colors.textPrimary, textShadow: '0 1px 2px rgba(0,0,0,0.3)' }}>
-                {CONFIG.fullName}
-              </h1>
-              <h2 className="text-xl sm:text-2xl font-semibold tracking-wide" style={{ color: '#E6D5A8' }}>
-                {CONFIG.jobTitle}
-              </h2>
-              <p className="text-base font-medium" dir="rtl" style={{ color: colors.textMuted }}>
-                {CONFIG.arabicTitle}
-              </p>
-            </div>
-            
-            {/* Bio / description */}
-            {CONFIG.bio && (
-              <p className="text-center text-[0.95rem] leading-relaxed max-w-xs mx-auto" style={{ color: colors.textSecondary }}>
-                {CONFIG.bio}
-              </p>
+        <div 
+          className="glass-card rounded-3xl shadow-2xl overflow-hidden border transition-all duration-500"
+          style={{
+            backgroundColor: `rgba(${colors.cardBg}, 0.85)`,
+            borderColor: `rgba(${colors.border}, 0.08)`,
+          }}
+        >
+          {/* الغلاف والبروفايل */}
+          <div className="relative h-48 bg-[#150706] flex items-center justify-center border-b border-white/5">
+            {/* في حال عدم وجود صورة غلاف، يظهر لون داكن متناسق */}
+            {CONFIG.coverImage && (
+              <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url('${CONFIG.coverImage}')` }}></div>
             )}
             
-            {/* Contact Buttons Grid - golden outline effect but distinctive */}
-            <div className="grid grid-cols-1 gap-3 pt-2">
+            {/* صورة البروفايل */}
+            <div className="absolute -bottom-12 left-1/2 transform -translate-x-1/2">
+              <div className={`${CONFIG.profileImageSize} rounded-full border-4 shadow-2xl overflow-hidden bg-[#1C0A08]`} 
+                   style={{ borderColor: `rgba(${colors.border}, 0.1)` }}>
+                <img 
+                  src={CONFIG.profileImage} 
+                  alt={CONFIG.fullName}
+                  className="w-full h-full object-cover"
+                  onError={(e) => e.target.src = 'https://via.placeholder.com/400?text=David'}
+                />
+              </div>
+            </div>
+          </div>
+
+          {/* المحتوى الرئيسي */}
+          <div className="pt-16 sm:pt-20 pb-6 px-5 sm:px-6 space-y-6">
+            {/* الاسم + المسمى الوظيفي */}
+            <div className="text-center space-y-1">
+              <h1 className="text-3xl sm:text-4xl font-bold tracking-tight" style={{ color: colors.textPrimary }}>
+                {CONFIG.fullName}
+              </h1>
+              <h2 className="text-sm uppercase tracking-widest font-medium opacity-80" style={{ color: colors.textSecondary }}>
+                {CONFIG.jobTitle}
+              </h2>
+            </div>
+
+            {/* أزرار التواصل (قائمة شفافة أنيقة متناسقة مع الخلفية الغامقة) */}
+            <div className="grid grid-cols-1 gap-3">
               {CONFIG.contacts.map((btn, idx) => (
                 <a
                   key={idx}
                   href={btn.url}
                   target="_blank" rel="noopener noreferrer"
-                  className="flex items-center gap-4 px-5 py-3.5 rounded-xl font-semibold backdrop-blur-sm transition-all duration-200 hover:scale-[1.01] active:scale-[0.99] btn-outline-gold"
+                  className="flex items-center gap-4 px-5 py-4 rounded-xl font-medium backdrop-blur-sm transition-all hover:bg-white/10 active:scale-[0.98] border border-white/5"
                   style={{
-                    backgroundColor: 'rgba(0,0,0,0.45)',
-                    border: `1px solid rgba(${colors.buttonBorder}, 0.6)`,
+                    backgroundColor: 'rgba(255, 255, 255, 0.03)',
                     color: colors.textPrimary,
                   }}
                   onClick={() => trackClick(`contact_${btn.label}`)}
                   aria-label={btn.label}
                 >
-                  <i className={`${btn.icon} text-2xl w-8`} style={{ color: colors.socialIcon }}></i>
-                  <span className="flex-1 text-left tracking-wide">{btn.label}</span>
-                  <i className="fa-solid fa-arrow-right-long text-sm opacity-70 transition-all group-hover:translate-x-1"></i>
+                  <i className={`${btn.icon} text-xl w-8 text-white/90`}></i>
+                  <span className="flex-1 text-left text-sm tracking-wide">{btn.label}</span>
+                  <i className="fa-solid fa-chevron-right text-xs opacity-30"></i>
                 </a>
               ))}
             </div>
-            
-            {/* Social Icons Row - glowing gold on hover */}
-            <div className="flex justify-center items-center gap-8 pt-4 pb-2">
+
+            {/* أيقونات السوشيال ميديا */}
+            <div className="flex justify-center items-center gap-6 pt-2">
               {CONFIG.socials.map((social, idx) => (
                 <a
                   key={idx}
                   href={social.url}
                   target="_blank" rel="noopener noreferrer"
-                  className="text-3xl social-gold transition-all duration-200"
+                  className="text-2xl hover:scale-110 transition-transform p-2 opacity-80 hover:opacity-100"
                   style={{ color: colors.socialIcon }}
                   onClick={() => trackClick(`social_${social.label}`)}
                   aria-label={social.label}
@@ -391,59 +244,63 @@ END:VCARD`;
                 </a>
               ))}
             </div>
-            
-            {/* QR Code with download feature */}
+
+            {/* رمز QR */}
             {CONFIG.qrCodeImageUrl && (
-              <div className="flex justify-center pt-3 pb-2">
-                <div className="relative group cursor-pointer text-center" onClick={downloadQR}>
-                  <div className="w-32 h-32 rounded-2xl p-2 bg-white shadow-xl qr-glow transition-all duration-300">
+              <div className="flex justify-center pt-2">
+                <div className="relative group cursor-pointer" onClick={downloadQR}>
+                  <div className="w-32 h-32 rounded-2xl p-2 bg-white shadow-xl hover:scale-105 transition-transform duration-300">
                     <img 
                       src={CONFIG.qrCodeImageUrl} 
-                      alt="Digital Card QR"
+                      alt="QR Code"
                       className="w-full h-full object-contain"
-                      onError={(e) => { e.target.src = 'https://placehold.co/200x200?text=QR+Code'; }}
                     />
                   </div>
-                  <p className="text-xs font-medium mt-2 opacity-80 group-hover:opacity-100 transition-opacity" style={{ color: colors.textMuted }}>
-                    <i className="fa-regular fa-circle-down mr-1"></i> تحميل QR
+                  <p className="text-center text-xs mt-2 opacity-60" style={{ color: colors.textPrimary }}>
+                    اضغط لتحميل QR
                   </p>
                 </div>
               </div>
             )}
-            
-            {/* Double Action Buttons: vCard + Request Card (gold gradient + elegant) */}
-            <div className="flex flex-col gap-4 pt-4">
+
+            {/* أزرار الإجراءات الرئيسية المتباينة بالأبيض */}
+            <div className="flex flex-col items-center gap-3 pt-4">
               <button
                 onClick={downloadVcard}
-                className="w-full flex items-center justify-center gap-3 py-3.5 rounded-xl font-bold text-base tracking-wide btn-golden shadow-xl transition-all"
-                aria-label="Save Contact"
+                className="w-full flex items-center justify-center gap-3 px-5 py-4 rounded-xl font-bold shadow-lg transition-all active:scale-[0.98] btn-shine"
+                style={{
+                  background: colors.buttonBg,
+                  color: colors.buttonText,
+                }}
               >
-                <i className="fa-regular fa-address-card text-xl"></i>
-                <span>Download vCard</span>
+                <i className="fa-solid fa-address-card text-lg"></i>
+                <span className="text-sm tracking-wide">Download vCard</span>
               </button>
-              
+
               <a
                 href={`https://wa.me/${CONFIG.whatsappRequestNumber}`}
                 target="_blank" rel="noopener noreferrer"
-                onClick={() => trackClick('request_card_whatsapp')}
-                className="w-full flex items-center justify-center gap-3 py-3.5 rounded-xl font-bold bg-black/40 backdrop-blur-sm border border-[#D4AF37]/60 text-[#E6D5A8] hover:bg-[#D4AF37]/20 hover:text-white transition-all hover:scale-[1.01]"
+                className="w-full flex items-center justify-center gap-3 px-5 py-4 rounded-xl font-bold transition-all active:scale-[0.98] border border-white/20 hover:bg-white/5"
+                style={{
+                  color: colors.textPrimary,
+                }}
               >
-                <i className="fa-regular fa-id-card text-xl"></i>
-                <span>Request Your Card</span>
+                <i className="fa-regular fa-id-card text-lg"></i>
+                <span className="text-sm tracking-wide">Request Your Card</span>
               </a>
             </div>
-            
-            {/* Footer with Cardiva branding — golden elegant */}
-            <div className="pt-7 pb-2 text-center">
-              <span className="text-[0.68rem] font-bold tracking-[0.25em] uppercase" style={{ color: '#9B8C54', letterSpacing: '0.2rem' }}>
-                ⚡ POWERED BY CARDIVA
+
+            {/* التذييل */}
+            <div className="pt-6 text-center">
+              <span className="text-[0.65rem] font-medium tracking-[0.25em] opacity-40">
+                POWERED BY CARDVIA
               </span>
             </div>
           </div>
         </div>
       );
     }
-    
+
     const root = ReactDOM.createRoot(document.getElementById('root'));
     root.render(<DigitalBusinessCard />);
   </script>
